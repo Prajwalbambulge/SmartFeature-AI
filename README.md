@@ -1,48 +1,152 @@
-# SmartFeature AI — Multi-Dataset Prototype
+# SmartFeature-AI
+### Hypothesis Testing for Feature Selection in Machine Learning Models
 
-This version evaluates the same feature-selection and classification workflow on:
+## 1. Project Overview
 
-1. **Breast Cancer Wisconsin Diagnostic** — original dataset bundled with scikit-learn (569 observations, 30 numeric features, 2 classes).
-2. **Wine Recognition** — additional benchmark dataset bundled with scikit-learn (178 observations, 13 numeric features, 3 classes).
+SmartFeature-AI is a Python-based research prototype developed to study and compare different feature selection techniques in Machine Learning.
 
-## Run on Windows / VS Code
+The project evaluates feature selection methods based on predictive performance, feature selection stability, and computational cost.
 
-Activate your existing virtual environment from the project folder:
+The application is developed using **Python and Streamlit**.
 
-```powershell
-.\venv\Scripts\Activate.ps1
+## 2. Research Objectives
+
+- Compare different feature selection techniques.
+- Evaluate the effect of feature selection on machine learning performance.
+- Analyze the stability of selected features across repeated data splits.
+- Measure the computational time required by different methods.
+- Test the methods on multiple datasets.
+
+## 3. Datasets
+
+The prototype supports two datasets:
+
+| Dataset | Samples | Features | Classes |
+|---|---:|---:|---:|
+| Breast Cancer Wisconsin | 569 | 30 | 2 |
+| Wine Recognition | 178 | 13 | 3 |
+
+Both datasets are used to evaluate the feature selection techniques under different classification problems.
+
+## 4. Feature Selection Techniques
+
+The prototype compares three techniques:
+
+1. **ANOVA F-Test** – Measures the relationship between individual features and class labels.
+2. **Kruskal-Wallis Test** – A non-parametric statistical test used to compare feature distributions across classes.
+3. **Random Forest Gini Importance** – Uses feature importance scores from a Random Forest model.
+
+## 5. Evaluation Metrics
+
+The project evaluates:
+
+- Accuracy
+- Macro-F1 Score
+- Jaccard Stability
+- Nogueira Stability
+- Computational Time
+
+These metrics help analyze predictive performance, consistency of selected features, and computational cost.
+
+## 6. Technologies Used
+
+- Python
+- Streamlit
+- Scikit-learn
+- NumPy
+- Pandas
+- SciPy
+- Matplotlib
+
+## 7. Project Structure
+
+```text
+SmartFeature-AI/
+│
+├── app.py
+├── experiment.py
+├── feature_selection.py
+├── metrics.py
+├── requirements.txt
+├── README.md
+├── CODE_APPENDIX.md
+└── Code_Appendix_for_Research_Paper.docx
 ```
 
-Install dependencies if needed:
+## 8. Installation and Setup
 
-```powershell
-python -m pip install -r requirements.txt
+### Step 1: Clone the repository
+
+```bash
+git clone https://github.com/bambulgeprajwal-sketch/SmartFeature-AI.git
 ```
 
-Run the app:
+### Step 2: Open the project folder
 
-```powershell
+```bash
+cd SmartFeature-AI
+```
+
+### Step 3: Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+### Step 4: Activate the environment
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### Step 5: Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 6: Run the application
+
+```bash
 streamlit run app.py
 ```
 
-## Experiment procedure
+The application will open in your browser.
 
-1. Choose **Breast Cancer Wisconsin** in the sidebar.
-2. Set **K = 10** and **CV repetitions = 10**; click **Run experiment for selected dataset**.
-3. Download the CSV results.
-4. Choose **Wine Recognition**. Use the same K=10, repetitions=10 and random seed; click Run.
-5. The app retains both result sets during the same Streamlit session and displays a cross-dataset comparison after both runs complete.
+## 9. How to Use
 
-Each dataset uses repeated stratified 5-fold cross-validation. Thus 10 repetitions produce 50 train/test splits per dataset. The scaler and feature selector are fitted on the training fold only.
+1. Launch the Streamlit application.
+2. Select a dataset.
+3. Configure the experiment settings.
+4. Select or run the feature selection methods.
+5. Execute the experiment.
+6. Compare the evaluation results.
+7. Download the generated results if available.
 
-## Methods
+## 10. Expected Research Contribution
 
-Feature selectors: ANOVA F-Test, Kruskal-Wallis, Random Forest Gini.
+This prototype provides an experimental framework for comparing statistical and model-based feature selection methods across multiple datasets.
 
-Classifiers: Logistic Regression, Random Forest, Gradient Boosting.
+It aims to study the trade-offs between predictive performance, selection stability, and computational cost.
 
-Metrics: accuracy, macro-F1, feature-selection time, mean pairwise Jaccard stability, and Nogueira stability.
+## 11. Future Improvements
 
-## Important research note
+- Support additional datasets.
+- Include more feature selection techniques.
+- Expand statistical comparisons.
+- Improve result visualization.
+- Conduct experiments with additional configurations.
 
-The Wine Recognition dataset is an additional benchmark dataset, not a dataset newly collected by this project. Describe it accurately in the paper. Compare methods within each dataset and discuss cross-dataset differences carefully because sample sizes, feature counts, and class counts differ. Do not claim that the prototype proves generalization to all datasets.
+## 12. Author
+
+**Prajwal Bambulge**
+
+B.Tech – Artificial Intelligence and Data Science
+
+Presidency University, Bengaluru
+
+## 13. Disclaimer
+
+This repository contains a research prototype developed for academic and experimental purposes. Experimental findings should be independently verified before being used as research conclusions.
